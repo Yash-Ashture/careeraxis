@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Jobs{% endblock %}
+
+{% block content %}
+<h2>Available Jobs</h2>
+
+<div class="jobs-container">
+    {% for job in jobs %}
+    <div class="job-card">
+
+        <div class="job-left">
+            <h3>{{ job[1] }}</h3>
+            <p class="company">{{ job[2] }}</p>
+            <p class="desc">{{ job[3] }}</p>
+
+            <div class="tags">
+                <span class="tag">Full Time</span>
+                <span class="tag">Remote</span>
+            </div>
+
+            {% if role == 'admin' %}
+                <br>
+                <a href="/admin_applicants/{{ job[0] }}" class="admin-btn">
+                    View Applicants
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="job-right">
+            {% if role == 'user' %}
+                <a href="/apply/{{ job[0] }}" class="apply-btn">Apply</a>
+            {% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

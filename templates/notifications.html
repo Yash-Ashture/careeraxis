@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Application Status{% endblock %}
+
+{% block content %}
+
+<h2>Your Applications</h2>
+
+{% if notifications|length == 0 %}
+    <p>You have not applied for any jobs yet.</p>
+{% else %}
+
+<div class="notify-container">
+    {% for n in notifications %}
+    <div class="notify-card">
+
+        <div>
+            <h3>{{ n[0] }}</h3>
+            <p class="company">{{ n[1] }}</p>
+        </div>
+
+        <div class="status">
+            {% if n[2] == "Approved" %}
+                <span class="approved">Approved</span>
+            {% elif n[2] == "Rejected" %}
+                <span class="rejected">Rejected</span>
+            {% else %}
+                <span class="pending">Pending</span>
+            {% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+<br>
+<a href="/dashboard">⬅ Back to Dashboard</a>
+
+{% endblock %}

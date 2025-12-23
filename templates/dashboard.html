@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<style>
+.dashboard-header { margin-bottom: 20px; }
+.stats { display: flex; gap: 15px; margin-bottom: 30px; }
+.stat-box {
+    padding: 12px 20px;
+    background: #f5f7fb;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.cards { display: flex; gap: 20px; }
+.card {
+    flex: 1;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #0d6efd;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+</style>
+
+<div class="dashboard-header">
+    <h2>Hello, {{ user_name }} 👋 Ready for your next career move...?</h2>
+</div>
+
+{% if role == "user" %}
+<div class="stats">
+    <div class="stat-box">📌 {{ pending_applications }} Applications Pending</div>
+    <div class="stat-box">📄 {{ total_jobs }} New Jobs Found</div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>👤 My Profile</h3>
+        <a href="/view_profile">View Profile</a>
+    </div>
+    <div class="card">
+        <h3>📊 Application Status</h3>
+        <a href="/notifications">Track Status</a>
+    </div>
+    <div class="card">
+        <h3>💼 Browse Jobs</h3>
+        <a href="/jobs">View Jobs</a>
+    </div>
+</div>
+{% endif %}
+
+{% if role == "admin" %}
+<div class="stats">
+    <div class="stat-box">📄 {{ total_jobs }} Jobs Posted By You</div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>➕ Add Job</h3>
+        <a href="/add_job">Add Job</a>
+    </div>
+    <div class="card">
+        <h3>💼 Manage Jobs</h3>
+        <a href="/jobs">View My Jobs</a>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

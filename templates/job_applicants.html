@@ -1,0 +1,40 @@
+<h2>Applicants</h2>
+
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Location</th>
+        <th>Skills</th>
+        <th>Education</th>
+        <th>Photo</th>
+        <th>Action</th>
+    </tr>
+
+    {% for applicant in applicants %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ applicant[2] }}</td>
+        <td>{{ applicant[3] }}</td>
+        <td>{{ applicant[4] }}</td>
+        <td>{{ applicant[5] }}</td>
+        <td>{{ applicant[6] }}</td>
+
+        <td>
+            {% if applicant[7] %}
+                <img src="{{ url_for('static', filename='uploads/' ~ applicant[7]) }}"
+                     width="80" height="80">
+            {% else %}
+                <img src="{{ url_for('static', filename='uploads/default.png') }}"
+                     width="80" height="80">
+            {% endif %}
+        </td>
+
+        <td>
+            <a href="/accept/{{ applicant[0] }}">Accept</a> |
+            <a href="/reject/{{ applicant[0] }}">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

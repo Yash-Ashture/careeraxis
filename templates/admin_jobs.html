@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Admin Jobs{% endblock %}
+
+{% block content %}
+<h2>Posted Jobs</h2>
+
+{% for job in jobs %}
+    <div class="job-card">
+        <h3>{{ job[1] }}</h3>
+        <p>{{ job[2] }}</p>
+
+        <a href="/admin_applicants/{{ job[0] }}" class="apply-btn">
+            View Applicants
+        </a>
+    </div>
+{% endfor %}
+
+{% endblock %}

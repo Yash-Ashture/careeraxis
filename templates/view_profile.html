@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+
+<div class="profile-wrapper">
+    <div class="profile-card">
+
+        <div class="profile-left">
+            <img src="{{ url_for('static', filename='uploads/' + (profile[7] if profile[7] else 'default.png')) }}"
+                 class="profile-avatar">
+            <h2>{{ profile[2] }}</h2>
+        </div>
+
+        <div class="profile-right">
+            <div class="info-row">
+                <span>Age : {{ profile[3] }}</span>
+                
+            </div>
+
+            <div class="info-row">
+                <span>Location : {{ profile[4] }}</span>
+                
+            </div>
+
+            <div class="info-row">
+                <span>Skills : {{ profile[5] }}</span>
+                
+            </div>
+
+            <div class="info-row">
+                <span>Education : {{ profile[6] }}</span>
+                
+            </div>
+
+            <div class="profile-actions">
+                <a href="/edit_profile" class="btn-primary">Edit Profile</a>
+                <a href="/dashboard" class="btn-secondary">Back</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

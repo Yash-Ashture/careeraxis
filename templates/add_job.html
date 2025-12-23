@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Job{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <h1>Add Job</h1>
+
+    <form class="admin-form" method="POST">
+        <label>Job Title</label>
+        <input type="text" name="title" required>
+
+        <label>Company Name</label>
+        <input type="text" name="company" required>
+
+        <label>Description</label>
+        <textarea name="description" required></textarea>
+
+        <button type="submit">Add Job</button>
+    </form>
+
+    <a href="{{ url_for('dashboard') }}" class="admin-back">← Back to Dashboard</a>
+</div>
+{% endblock %}

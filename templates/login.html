@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareerAxis | Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">CareerAxis</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Jobs</a>
+        <a href="#">Companies</a>
+        <a href="/login" class="btn-outline">Login</a>
+    </div>
+</nav>
+
+<div class="overlay"></div>
+
+<div class="login-modal">
+    <h2>Login</h2>
+    <span class="close">&times;</span>
+
+    <form method="POST">
+        <div class="input-box">
+            <span class="icon">📧</span>
+            <input type="email" name="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-box">
+            <span class="icon">🔒</span>
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+
+        <div class="options">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit">Login Now</button>
+
+        <p class="register">
+            Not a member? <a href="/register">Signup Now</a>
+        </p>
+    </form>
+</div>
+
+</body>
+</html>

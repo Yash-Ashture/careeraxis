@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+
+<div class="profile-wrapper">
+    <div class="profile-card">
+
+        <form method="post" enctype="multipart/form-data" class="edit-form">
+
+            <div class="profile-left">
+                <img src="{{ url_for('static', filename='uploads/' + (profile[7] if profile[7] else 'default.png')) }}"
+                     class="profile-avatar">
+                <input type="file" name="photo">
+            </div>
+
+            <div class="profile-right">
+
+                <label>Name</label>
+                <input name="name" value="{{ profile[2] }}">
+
+                <label>Age</label>
+                <input name="age" value="{{ profile[3] }}">
+
+                <label>Location</label>
+                <input name="location" value="{{ profile[4] }}">
+
+                <label>Skills</label>
+                <input name="skills" value="{{ profile[5] }}">
+
+                <label>Education</label>
+                <input name="education" value="{{ profile[6] }}">
+
+                <div class="profile-actions">
+                    <button class="btn-primary">Save</button>
+                    <a href="/view_profile" class="btn-secondary">Cancel</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

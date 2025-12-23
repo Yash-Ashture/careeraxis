@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Applicants{% endblock %}
+
+{% block content %}
+
+<h2>Applicants for this Job</h2>
+
+{% if applicants|length == 0 %}
+    <p>No one has applied yet.</p>
+{% else %}
+
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>No</th>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Skills</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for a in applicants %}
+    <tr>
+        <td>{{ loop.index }}</td>
+
+        <td>
+            {% if a[2] %}
+                <img src="{{ url_for('static', filename='uploads/' ~ a[2]) }}"
+                     width="60" height="60"
+                     style="border-radius:50%;">
+            {% else %}
+                No Photo
+            {% endif %}
+        </td>
+
+        <td>{{ a[0] }}</td>
+        <td>{{ a[1] }}</td>
+        <td><b>{{ a[3] }}</b></td>
+
+        <td>
+            <a href="/update_status/{{ a[4] }}/Approved"
+               style="color:green; font-weight:bold;">
+                Approve
+            </a>
+            |
+            <a href="/update_status/{{ a[4] }}/Rejected"
+               style="color:red; font-weight:bold;">
+                Reject
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+<br>
+<a href="/jobs">⬅ Back to Jobs</a>
+
+{% endblock %}
